@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store - Inventory Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://via.placeholder.com/1200x600/667eea/white?text=Inventory+System');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 60px;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Inventory Section */
+        .inventory {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .inventory h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .inventory-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .inventory-table {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .inventory-table h3 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+            font-size: 1.8rem;
+        }
+
+        .inventory-table table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .inventory-table th,
+        .inventory-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .inventory-table th {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+
+        .inventory-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        .inventory-table tr:hover {
+            background: #e9ecef;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            margin: 1rem 0 0.5rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .product-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            padding: 0 1rem;
+        }
+
+        .price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .stock-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            padding: 0 1rem 1rem;
+        }
+
+        .in-stock {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .sold {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                gap: 1rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+            
+            .inventory h2,
+            .products h2 {
+                font-size: 2rem;
+            }
+            
+            .inventory-table {
+                font-size: 0.9rem;
+            }
+            
+            .inventory-table th,
+            .inventory-table td {
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Fashion Store</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#inventory">Inventory</a></li>
+                <li><a href="#sales">Sales</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Fashion Store Inventory System</h2>
+                <p>Track your inventory and sales in real-time</p>
+            </div>
+        </section>
+
+        <section id="inventory" class="inventory">
+            <h2>Inventory Management</h2>
+            <div class="inventory-stats">
+                <?php
+                // Database configuration
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "fashion_store";
+
+                // Sample inventory data (in a real project, this would come from database)
+                $inventory_data = array(
+                    array("Summer Dress", 49.99, 100, 75, 25, 3749.25),
+                    array("Men's Shirt", 39.99, 150, 120, 30, 4798.80),
+                    array("Women's Jeans", 59.99, 80, 60, 20, 3599.40),
+                    array("Fashion Accessories", 19.99, 200, 150, 50, 2998.50),
+                    array("Winter Jacket", 89.99, 60, 40, 20, 3599.60),
+                    array("Sports Shoes", 69.99, 120, 90, 30, 6299.10)
+                );
+
+                // Calculate totals
+                $total_revenue = 0;
+                $total_sold = 0;
+                $total_in_stock = 0;
+
+                foreach ($inventory_data as $item) {
+                    $total_revenue += $item[5];
+                    $total_sold += $item[3];
+                    $total_in_stock += $item[4];
+                }
+                ?>
+                
+                <div class="stat-card">
+                    <h3>Total Revenue</h3>
+                    <p class="stat-number">$<?php echo number_format($total_revenue, 2); ?></p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Total Items Sold</h3>
+                    <p class="stat-number"><?php echo $total_sold; ?></p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Items in Stock</h3>
+                    <p class="stat-number"><?php echo $total_in_stock; ?></p>
+                </div>
+            </div>
+
+            <div class="inventory-table">
+                <h3>Detailed Inventory</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Price</th>
+                            <th>Quantity Bought</th>
+                            <th>Quantity Sold</th>
+                            <th>In Stock</th>
+                            <th>Revenue</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        foreach ($inventory_data as $item) {
+                            echo "<tr>";
+                            echo "<td>" . $item[0] . "</td>";
+                            echo "<td>$" . number_format($item[1], 2) . "</td>";
+                            echo "<td>" . $item[2] . "</td>";
+                            echo "<td>" . $item[3] . "</td>";
+                            echo "<td>" . $item[4] . "</td>";
+                            echo "<td>$" . number_format($item[5], 2) . "</td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="products" class="products">
+            <h2>Our Products</h2>
+            <div class="product-grid">
+                <?php
+                // Sample products data
+                $products_data = array(
+                    array("Summer Dress", "Light and comfortable dresses for sunny days", 49.99, "https://via.placeholder.com/300x400/FF6B6B/white?text=Summer+Dress", 25, 75),
+                    array("Men's Shirt", "Formal and casual shirts for every occasion", 39.99, "https://via.placeholder.com/300x400/4ECDC4/white?text=Men+Shirts", 30, 120),
+                    array("Women's Jeans", "Comfortable and stylish denim collection", 59.99, "https://via.placeholder.com/300x400/45B7D1/white?text=Women+Jeans", 20, 60),
+                    array("Fashion Accessories", "Complete your look with our accessories", 19.99, "https://via.placeholder.com/300x400/96CEB4/white?text=Accessories", 50, 150),
+                    array("Winter Jacket", "Warm and stylish jackets for cold weather", 89.99, "https://via.placeholder.com/300x400/FFA726/white?text=Winter+Jacket", 20, 40),
+                    array("Sports Shoes", "Comfortable shoes for sports and casual wear", 69.99, "https://via.placeholder.com/300x400/7E57C2/white?text=Sports+Shoes", 30, 90)
+                );
+
+                foreach ($products_data as $product) {
+                    echo '<div class="product-card">';
+                    echo '<img src="' . $product[3] . '" alt="' . $product[0] . '">';
+                    echo '<h3>' . $product[0] . '</h3>';
+                    echo '<p>' . $product[1] . '</p>';
+                    echo '<span class="price">$' . number_format($product[2], 2) . '</span>';
+                    echo '<div class="stock-info">';
+                    echo '<span class="in-stock">In Stock: ' . $product[4] . '</span>';
+                    echo '<span class="sold">Sold: ' . $product[5] . '</span>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Fashion Store. All rights reserved.</p>
+            <p>Inventory Management System</p>
+        </div>
+    </footer>
+</body>
+</html>
