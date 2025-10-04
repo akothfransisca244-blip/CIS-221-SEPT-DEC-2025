@@ -1,0 +1,115 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+content=width=device-width,initial scale=1.0">
+<title>FASHION STORE -SHOP NOW</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+<h1>FASHION STORE</h1>
+<nav>
+<ul>
+<li><a href="#products">Shop</a></li>
+<li><a href="#sales">Sales</a></li>
+<li><a href="#benefits">Why shop here?</a></li>
+<li><a href="#">contact</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="products"
+class="products-showcase">
+<h2>Our Latest Collections</h2><div 
+class="product-grid"><article class="product-card">
+<img src="images/dress.jpg"
+alt="Stylish Summer Dress">
+<h3>Summer floral dress</h3>
+<p class="price">$49.99</p>
+<p class=description">Lightweight cotton dress perfect for any casual outing.</p>
+<button>Add to cart</button>
+</article>
+<article class="products-card">
+</article>
+<article
+class="products-card"><img src="image/jjeans.jpg"
+alt="slim fit blue jeans"><h3>Slim Fit Blue jeans</h3>
+<p class="price">$79.50</p>
+<p class="description">Durable denim with a modern,confortable fit.</p>
+<button>Add to cart</button>
+</article>
+</div></section>
+<hr>
+<section id="sales">
+<h2>Upcoming sales offer -Dont miss out!</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Discount</th>
+<th>Start Date</th>
+<th>End Date</th>
+</tr></thead><tbody><tr><td>All Footwear</td>
+<td>30% OFF</td>
+<td>2025-10-15</td>
+<td>2025-10-22</td></tr>
+<tr>
+<td>winter coats</td>
+<td>Upto 50% OFF </td>
+<td>2025-11-01</td>
+<td>2025-11-30</td>
+</tr>
+<tr>
+<td>Accesories</td>
+<td>Buy One Get One 50% OFF</td>
+<td>2025-12-05</td>
+<td>22025-12-12</td>
+</tr>
+</tbody>
+</table>
+</section>
+<hr><section id="benefits">
+<h2>Why Shop at Fashion Store?</h2>
+<div class="benefits-list">
+<article><h3>CURATED QUALITIES</h3>
+<p>We hand-pick every item to ensure high quality material and craftmanship,guaranteeing long lasting style.</p>
+</article><article>
+<h3>Fast & free shipping</h3>
+<p>Enjoy free standard shipping on all orders over $50,delivered quikly right to your door.</p>
+</article>
+<article>
+<h3>Easy 30 day returns</h3>
+<p>Shop with confidence thanks to our hassle-free return policy if you are not completely satisfied.</p>
+</article>
+</div>
+</section>
+</main>
+<footer>
+<p>&copy; 2025 Fashion store.All rights reserved.</p>
+<div class="social-links">
+<a href="#">Facebook</a>
+<a href="#">Instagram</a>
+</div>
+</footer>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
